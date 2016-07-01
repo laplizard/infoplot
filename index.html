@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>InfoPlot</title>
+<style type="text/css">
+body{
+	height: 100%;
+	overflow: hidden; /* keeps scrollbar off IE */
+	font-family: arial,sans-serif;
+	font-size: 13px;
+	color: #000;
+	background-color: #fff;
+		
+	padding:0px;
+	margin:0px;
+}
+canvas:focus{
+	outline:none;
+}
+
+
+#groupslist ul
+{
+    margin: 10px;
+    padding: 0px;
+    list-style-type: none;
+    position:absolute;
+    top:181px;
+	height:238px;
+    width:199px;
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+
+#groupslist a
+{
+    display: block;
+    width: 8em;
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+    text-align: left;
+}
+
+#groupslist a:hover
+{
+    background-color: transparent;
+}
+
+
+#examplelist ul
+{
+    margin: 10px;
+    padding: 0px;
+    list-style-type: none;
+    position:absolute;
+    top:410px;	/*501px;*/
+    //height:218px;
+	//height:320px; /* Steve tweak */
+	height:410px; /* Steve tweak */
+	width:199px;
+    overflow-x:hidden;
+    overflow-y:auto;
+	z-index: 300; /* Steve: added to fix some Example links not working - old Connections UI component overlapping? */
+}
+
+#examplelist a
+{
+    display: block;
+    width: 8em;
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+    text-align: left;
+}
+
+#examplelist a:hover
+{
+    background-color: transparent;
+}
+
+
+
+#connectlist ul
+{
+    margin: 10px;
+    padding: 0px;
+    list-style-type: none;
+    position:absolute;
+    top:630px;	/*721px;*/
+    height:138px;
+    width:199px;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+#connectlist a
+{
+    display: block;
+    width: 8em;
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+    text-align: left;
+}
+
+#connectlist a:hover
+{
+    background-color: transparent;
+}
+
+
+#textonlybutton {
+	background:none;
+	text-align: left;
+	border:0;
+	padding:0;
+	-webkit-border-radius: 0px;
+	-moz-border-radius:0px;
+	border-radius:0px;
+	font-size: 14px; line-height:24px;
+
+}
+
+.exampleclass {
+	background:none;
+	text-align: left;
+	border:0;
+	padding:0;
+	-webkit-border-radius: 0px;
+	-moz-border-radius:0px;
+	border-radius:0px;
+	font-size: 14px; line-height:24px;
+	width:150px;
+
+}
+
+.groupsclass {
+	background:none;
+	text-align: left;
+	border:0;
+	padding:0;
+	-webkit-border-radius: 0px;
+	-moz-border-radius:0px;
+	border-radius:0px;
+	font-size: 14px; line-height:24px;
+
+}
+
+.connectclass {
+	background:none;
+	text-align: left;
+	border:0;
+	padding:0;
+	-webkit-border-radius: 0px;
+	-moz-border-radius:0px;
+	border-radius:0px;
+	font-size: 14px; line-height:24px;
+
+}
+
+
+.inputWrapper {
+    height: 20px;
+    width: 144px;
+    left: 120px;
+    top: 2px;
+    overflow: hidden;
+    position: absolute;
+    cursor: pointer;
+    /*Using a background color, but you can use a background image to represent a button*/
+    background-color: #FFF;
+	
+}
+.fileInput {
+    cursor: pointer;
+    height: 100%;
+    position:absolute;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    /*This makes the button huge. If you want a bigger button, increase the font size*/
+    font-size:50px;
+    /*Opacity settings for all browsers*/
+    opacity: 0;
+    -moz-opacity: 0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)";
+	filter: alpha(opacity=0); /* IE 5-7 */
+}
+
+.fileInputButton {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#nav {
+    position: absolute;
+	top: -2px;
+    left: 730px;
+    z-index: 300;
+	width: 18%;
+    height: 8%;
+	visibility: hidden;
+}
+
+#info_iframe {
+    position: absolute;
+	top: 190px;
+    left: 350px;
+	width: 50%;
+    height: 50%;
+    z-index: 400;
+	frameborder: 0;
+	overflow: no; 
+	marginheight: 0;
+	marginwidth: 0; 
+	seamless: seamless; 
+	scrolling: no; 
+}
+
+#nav_links a:link
+{
+text-decoration: none; 
+color: rgb(171, 171, 171);
+}
+#nav_links a:visited 
+{
+text-decoration: none; 
+color: rgb(171, 171, 171);
+}
+#nav_links a:active 
+{
+text-decoration: none;
+color: rgb(171, 171, 171);
+}
+#nav_links a:hover 
+{
+text-decoration: none;
+cursor: pointer;
+color: #FF8300;
+}
+
+.paragraph_style_2 {
+    color: rgb(171, 171, 171);
+    font-family: 'Arial-Black', 'Arial Black', sans-serif;
+    font-size: 14px;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 19px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    opacity: 1.00;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    text-align: right;
+    text-decoration: none;
+    text-indent: 0px;
+    text-transform: none;
+}
+
+</style>
+
+<script type="text/javascript">
+
+//Steve: below works for detecting screen size
+/*
+if (screen.width <= 1279) {
+alert("Sorry, your screen width is less than 1280px. This app is optimised for desktop computers. Redirecting you to the Information page...")
+document.location = "http://www.cs.nott.ac.uk/~pszhms/AAF/Adaptive_Architecture_Framework/Information.html";
+}
+*/
+
+// ...but decided to got with device detection...
+
+// Steve: note - following works by looking to see if the browser version string contains Win, Mac etc.
+var OSName="Unknown OS";
+if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
+if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
+if (navigator.appVersion.indexOf("X11")!=-1) OSName="UNIX";
+if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";
+if (navigator.appVersion.indexOf("iPad")!=-1) OSName="iPad";
+if (navigator.appVersion.indexOf("iPhone")!=-1) OSName="iPhone";
+if (navigator.appVersion.indexOf("Android")!=-1) OSName="Android";
+
+//alert('Your OS: '+OSName);
+ 
+ 
+if (OSName=='iPad' || OSName=='iPhone' || OSName=='Android' ) {
+alert("Sorry, Andoid and iOS devices are not currently supported. Redirecting you to the Information page...")
+document.location = "./information.html";
+}
+
+</script>
+
+</head>
+
+<body>
+
+<script language="javascript">
+	//var nodeTextHtml = "";
+	//var groupsTextHtml = "";
+
+	var exampleButtonText = "";
+	var connectButtonText = "";
+	
+	var myShowBrowseButton = false;
+	
+	function setBrowseButton(toggle) {
+		myShowBrowseButton = toggle;
+		document.getElementById("inputWrapperId").style.visibility = "visible";
+	}
+
+	function exampleButtonClick(txt) {
+		exampleButtonText = txt;
+	}
+	
+	function open_win(url) {
+		window.open(url);
+	}
+	
+	function myFunction(txt) {
+		//alert("Text clicked: "+txt);
+		if (txt != "-1") {
+			connectButtonText = txt;
+		}
+	}
+	
+	document.write("<div id='examplelist'>");
+//	document.write("<ul>"+nodeTextHtml+"</ul>");
+	document.write("</div>");
+
+
+//	document.write("<div id='groupslist'>");
+//	document.write("</div>");
+
+	document.write("<div id='connectlist'>");
+//	document.write("<ul>"+nodeTextHtml+"</ul>");
+	document.write("</div>");
+
+	
+/*
+	document.write("<div id='groupslist'><ul>");
+	document.write("<li><button id='textonlybutton' onclick='myFunction(this.id)'>Try it</button></li>");
+	document.write("<li><font color='FF0000'>Who</font></li>");
+	document.write("<li id='nodeText'>CHange me</li>");
+	document.write("<li>ASP</li>");
+	document.write("<li>CSS</li>");
+	document.write("<li>Dreamweaver</li>");
+	document.write("<li>JavaScript</li>");
+	document.write("<li>Scripting tools</li>");
+	document.write("<li>XHTML</li>");
+	document.write("<li>XML</li>");
+	document.write("</ul></div>");
+*/
+	
+	function updateExampleText(txt) {
+		document.getElementById("examplelist").innerHTML = "<ul>"+txt+"</ul>";
+//		nodeTextHtml = txt;
+	}
+	
+	function updateGroupsText(txt) {
+		//document.getElementById("groupslist").innerHTML = "<ul>"+txt+"</ul>";
+//		groupsTextHtml = txt;
+	}
+
+	function updateConnectText(txt) {
+		document.getElementById("connectlist").innerHTML = "<ul>"+txt+"</ul>";
+//		groupsTextHtml = txt;
+	}
+</script> 	
+	
+<canvas id="GameCanvas" onclick="this.focus();" oncontextmenu="return false;" width=1500 height=900 tabindex=1></canvas>
+
+
+<img src="./data/infoplot_nav.png" border="0" usemap="#location-map" id="nav" />
+<map name="location-map" id="location-map">
+  <area shape="rect" coords="0,0,40,40" href="./index.html" id="home" />
+  <area shape="rect" coords="50,0,125,40" href="./information.html" id="information"/>
+  <area shape="rect" coords="135,0,180,40" href="./manual.html" id="manual" />
+  <area shape="rect" coords="190,0,399,40" href="./credits.html" id="credits"/>
+  
+  
+
+
+
+  
+  
+</map>
+
+
+
+<br>
+<div style="visibility:visible" class="inputWrapper" id="inputWrapperId">
+	<button class="fileInputButton">browse local file</button>
+    <input class="fileInput" type="file" id='files' name="files[]" multiple/>
+</div>	
+
+<script language="JavaScript">
+//	window.onbeforeunload = confirmExit;
+	function confirmExit() {
+		return "You have attempted to leave this page. Your map will be lost. Are you sure you want to exit this page?";
+	}
+</script>
+
+<script language="javascript" src="main.js">Javascript not supported!</script>
+
+</body>
+</html>

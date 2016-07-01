@@ -1,0 +1,4 @@
+server=http://<your host name>
+folder=<your server directory containing app>
+beanfile=mindmapbean.php
+uploadfile=upload2.php
