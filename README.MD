@@ -13,7 +13,7 @@ Copyright (c) 2016, The University of Nottingham
 InfoPlot is a tool for creating information maps online.
 To see this app working live: http://www.adaptivearchitectureframework.org
 
-Third-party code credits and licensing:
+THIRD-PARTY CODE CREDITS AND LICENSING:
 
 PHPMailer-master / http://sendgrid.com Licence: Lesser GPL / GNU Library Public License v2.1.
 
@@ -25,6 +25,11 @@ Some early code (functions and prototypes including the name ‘BBGame’) may b
 
 Code for hashing user passwords is derived from: better_crypt() / blowfish hash / bcrypt - original PHP code by Chirp Internet: http://www.chirp.com.au 
 
+The default map provided with InfoPlot is:
+The Adaptive Architecture Framework: a categorised overview of building adaptations and their causes, methods of adaptations and the effects of adaptation in the built environment. The information contained in the Adaptive Architecture framework was collated by Holger Schnädelbach. Discussions with Mike Twidale, Ava Fatah, Susanne Seitinger and Nils Jäger have shaped its content. It was originally developed and published in Freemind.
+The collation of the information has been supported by the Leverhulme Trust and the University of Nottingham via the ‘The Built Environment as Interface to Personal Data’ project (a Nottingham Research Fellowship).
+The Adaptive Architecture work was originally published here: Schnädelbach, H., Adaptive Architecture - A Conceptual Framework, in (Eds.) Geelhaar, J., Eckardt, F., Rudolf, B.,  Zierold, S., Markert, M., proceedings of MediaCity: Interaction of Architecture, Media and Social Phenomena, Weimar, Germany, 2010, pp. 523-555
+For more information about Adaptive Architecture, contact: holger.schnadelbach@nottingham.ac.uk
 
 
 SERVER SET UP AND REQUIRMENTS
