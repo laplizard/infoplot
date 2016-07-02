@@ -147,7 +147,7 @@ var DEFAULT_MAP_ID = "1";
 // Steve add:
 var doYouAgreeToConditionsText = "Do you agree to the terms and conditions on this page?";
 
-var TopBarText = "A catergorised overview of adaptations<BR>and their causes, methods of adaptation<BR>and the effect of adaptations<BR>in Adaptive Architecture.<BR>Explore connections and examples.<BR>Log in to copy, add and share.";
+var TopBarText = "Your text goes here...";
 
 //Change this to true for a stretchy canvas!
 //
@@ -7230,7 +7230,7 @@ c_TopBarView.prototype.p_SetupGadgets=function(t_userName){
 	// Steve add:
 	// h5.CreateLabel("adaptivelabel","Adaptive Architecture Framework",740,50);
 	//h5.CreateLabel("adaptivelabel","Adaptive Architecture Framework",895,40);
-	h5.CreateLabel("adaptivelabel","Adaptive Architecture Framework",adaptivelabelPositionOnTopBarX,40);
+	h5.CreateLabel("adaptivelabel","InfoPlot",adaptivelabelPositionOnTopBarX,40);
 	h5.SetGadgetColor("adaptivelabel","blue");
 	// h5.SetGadgetFontSize("adaptivelabel","18");
 	h5.SetGadgetFontSize("adaptivelabel","15");

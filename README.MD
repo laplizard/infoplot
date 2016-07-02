@@ -25,7 +25,42 @@ Some early code (functions and prototypes including the name ‘BBGame’) may b
 
 Code for hashing user passwords is derived from: better_crypt() / blowfish hash / bcrypt - original PHP code by Chirp Internet: http://www.chirp.com.au 
 
-Required configuration:
+
+
+SERVER SET UP AND REQUIRMENTS
+
+Recommended OS: Debian GNU/Linux 7.0+ 64-bit.
+Install server packages: apache2, mysql, php, phpmyAdmin.
+
+
+
+DATABASE CONFIGURATION
+
+(see directory 'database' for the required schema and an mySQL export that contains the required structure and an example map)
+
+Login to mySQL as root:
+mysql -u root -p<your_mysql_root_password>
+
+Create empty database to take import:
+CREATE DATABASE infoplot;
+
+Create mySQL user ‘infoplot_user’ and add password:
+GRANT ALL ON infoplot.* TO infoplot_user@localhost IDENTIFIED BY '<your_chosen_password_for_infoplot_user>';
+
+Restore infoplot mySQL schema and example map (Adaptive Architecture):
+mysql -u root -p<your_mysql_root_password> infoplot < infoplot.sql
+
+Testing whether new user can access DB:
+mysql -uinfoplot_user -p<your_chosen_password_for_infoplot_user> infoplot
+
+show tables;
+Should reply with: map, share and user.
+
+Copy InfoPlot HTML and scripts from Linux home dir to web root:
+Something like....: cp -r /infoplot /var/www
+
+
+REQUIRED CONFIGURATION AND TWEAKING IN INFOPLOT FILES:
 
 You will need a free account on the emailer service SendGrid http://sendgrid.com . Your credentials are set at approximately line 240 in mindmapbean.php.
 
@@ -33,10 +68,13 @@ In setup.php, configure the database credentials.
 
 In serverinfo.txt, configure the host URL and server-side directory.
 
-If you want to change the current paths for the supporting web pages, accessed from the navbar (information.html, manual.html, credits.html), see approximately line 63 in main.js. See also approximately line 382 in index.html.
+If you want to change the current paths for the supporting web pages (they can be hosted elsewhere), accessed from the navbar (information.html, manual.html, credits.html), see approximately line 63 in main.js. See also approximately line 382 in index.html.
 
 If you want to change the current path for the login Terms and Conditions web page (embedded in an iFrame, in the login page). See the variable 'loginPageTermsAndConditionsIFramePage', around line 41 in main.js.
 
+
+InfoPlot database admin via Phpmyadmin:
+http://<your domain>/phpmyadmin/
 
 
 
