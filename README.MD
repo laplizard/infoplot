@@ -62,8 +62,8 @@ show tables;
 Should reply with: map, share and user.
 
 Copy InfoPlot HTML and scripts from Linux home dir to web root:
-Something like....: cp -r /infoplot /var/www
-
+sudo su
+cp -r infoplot /var/www
 
 REQUIRED CONFIGURATION AND TWEAKING IN INFOPLOT FILES:
 
@@ -72,6 +72,12 @@ You will need a free account on the emailer service SendGrid http://sendgrid.com
 In setup.php, configure the database credentials.
 
 In serverinfo.txt, configure the host URL and server-side directory.
+
+Note: depending on your server config and user permissions, you may not permission to transfer files directly to /var/www. You may need to copy mindmapbean.php, setup.php and serverinfo.txt to your server home directory first and then do something like:
+sudo su
+cp mindmapbean.php /var/www/infoplot
+cp setup.php /var/www/infoplot
+cp serverinfo.txt /var/www/infoplot
 
 If you want to change the current paths for the supporting web pages (they can be hosted elsewhere), accessed from the navbar (information.html, manual.html, credits.html), see approximately line 63 in main.js. See also approximately line 382 in index.html.
 

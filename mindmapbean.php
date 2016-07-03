@@ -261,7 +261,7 @@ $mail->Password = '<YOUR SMTP PASSWORD>';    // SMTP password
 $mail->SMTPSecure = 'tls';                        // Enable TLS/SSL encryption 
 $mail->Port = 587;                                      // TCP port to connect to
 
-$mail->From = 'NOREPLY_INFOPLOT_ADMIN@mrl-vm.cloudapp.net'; 
+$mail->From = 'NOREPLY_INFOPLOT_ADMIN@<YOUR DOMAIN>'; 
 $mail->FromName = 'InfoPlot Admin'; 
 //$mail->addAddress('<YOUR TEST EMAIL>', 'Username');     // Add a recipient
 
