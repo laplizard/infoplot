@@ -1,7 +1,7 @@
 <?php
 
 /*
-Design: Joff&Ollie Studio http://www.joffandollie.co.uk/) and Holger Schnädelbach, from an original concept by Holger Schnädelbach 
+Design: Joff&Ollie Studio http://www.joffandollie.co.uk/ and Holger Schnädelbach, from an original concept by Holger Schnädelbach 
 Authors:  Robin Shackford - robin@littlebighead.com (original prototype) and Steve North (further development and expansion)
 Contact name: Holger Schnädelbach
 Contact email: Holger.Schnadelbach@nottingham.ac.uk 
